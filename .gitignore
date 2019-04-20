@@ -2,6 +2,7 @@
 # Edit at https://www.gitignore.io/?templates=java,maven,jetbrains
 
 .idea/
+Course.iml
 ### Java ###
 # Compiled class file
 *.class
