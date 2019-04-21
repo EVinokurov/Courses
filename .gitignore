@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/java,maven,jetbrains
 # Edit at https://www.gitignore.io/?templates=java,maven,jetbrains
 
+=======
+>>>>>>> add controllers for courses fix filedpwnloading
 .idea/
 Courses.iml
 ### Java ###
@@ -102,10 +105,10 @@ fabric.properties
 ### JetBrains Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
 
 # Sonarlint plugin
 .idea/sonarlint
@@ -120,6 +123,10 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+<<<<<<< HEAD
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.gitignore.io/api/java,maven,jetbrains
+=======
+.mvn/wrapper/maven-wrapper.jar
+>>>>>>> add controllers for courses fix filedpwnloading

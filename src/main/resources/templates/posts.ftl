@@ -1,75 +1,76 @@
+<!DOCTYPE html>
+<!-- создание, редактирование курсов деканатом -->
 <html>
-<title>Posts</title>
+<head>
+    <title>DekCourse</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css "/>
+</head>
 <body>
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="mainTitleForDekan.html">Main title<span class="sr-only"></span></a></li>
+                <li><a href="students.html">Students</a></li>
+                <li class="active"><a href="DekCourse.jsp">Course list</a></li>
+                <li ><a href="Messages.html">Messages</a></li>
+                <li ><a href="mainTitleForUser.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</nav>
+<div class="container" id="main">
+    <h1>Course list (dekan)</h1>
+    <a href="/create_course">
+        <button   data-toggle="modal">
 
-<form method="post" enctype="multipart/form-data">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" aria-describedby="" placeholder="Enter course name">
-                    </div>
-                    <div class="form-group">
-                        <label for="input">Professor</label>
-                        <select class="form-control" name="teacher" id="exampleFormControlSelect1">
-                            <option value="1">Prepod1</option>
-                        </select>
+            New course
+        </button>
+    </a>
+</div>
+<!-- Модальное окно -->
+<#list courses as course>
+    <div class="container delete">
+        <div class="row align-items-center h-100">
+            <div class="col class_newcourse">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <a href="/course/${course.getId()}"><h2>  ${course.getName()}</h2>  </a>
+                        <h4>Professor: ${course.getTeacher().getName()}</h4>
+                        <p id="describtion">${course.getDescription()}</p>
+                        <h5>Quota: ${course.getQuota()}</h5>
+                        <#if course.isRating() == true>
+                            <h5>Selection type: rating</h5>
+                        <#else>
+                            <h5>Selection type: interview</h5>
+                        </#if>
+                        <h5>Section: ${course.getSection()}</h5>
+                        <h5>Presentation:</h5>
+                        <h5>Deadline: ${course.getDeadline()}</h5>
 
+                        </form> <form method="get">
+                        <p><button name="id" value="${course.getId()}" type="submit" class="btn btn-primary">
+                            Redact course
+                        </button></p>
+                    </form>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Course</label>
-                        <select d class="form-control" name="year" id="exampleFormControlSelect1">
-                            <option selected="selected" value=""></option>
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Selection </label>
-                        <select class="form-control" name="rating" id="exampleFormControlSelect1">
-                            <option value="True">rating</option>
-                            <option value = "False">interview</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Section</label>
-                        <select class="form-control1" name = "section">
-                            <option value="section 1">section 1</option>
-                            <option value="section 2">section 2</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Quota</label>
-                        <select class="form-control" name= "quota">
-                            <option value = "5">5</option>
-                            <option value = "10">10</option>
-                            <option value = "15">15</option>
-                            <option>25</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Deadline</label>
-                        <input type="date" name="deadline" class="form-control" aria-describedby="" placeholder="12.12.12">
-                    </div>
-                    <div class="form-group">
-                    </div>
-                    <label>Description</label>
-                    <textarea name = "description" class="form-control" rows="3" class="form-control" aria-describedby="" placeholder="Enter course information"></textarea>
-                    <input type="file" name="file" id="file">
+                    <form method="post">
+                        <p><button name="id" value="${course.getId()}" type="submit" class="btn btn-primary">
+                            Delete course
+                        </button></p>
+                    </form>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit">Save</button>
             </div>
         </div>
     </div>
+    </div>
+</#list>
 </form>
-
 </body>
 </html>
