@@ -29,6 +29,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void addCourse(Course course) {
         courseRepository.save(course);
+        //course.setPresentation_path();
     }
 
     @Override

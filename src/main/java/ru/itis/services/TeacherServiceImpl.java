@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import ru.itis.entities.Teacher;
 import ru.itis.repository.TeacherRepository;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -18,5 +19,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Teacher getTeacherById(Long id) {
         return teacherRepository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @Override
+    public List<Teacher> getAll() {
+        return teacherRepository.findAll();
     }
 }
