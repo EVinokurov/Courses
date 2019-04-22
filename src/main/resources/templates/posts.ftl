@@ -27,12 +27,15 @@
 </nav>
 <div class="container" id="main">
     <h1>Course list (dekan)</h1>
-    <a href="/create_course">
+    <a href="/new">
         <button   data-toggle="modal">
-
             New course
         </button>
     </a>
+    <form method="post">
+        <h7>Search</h7>
+    <input type="search" name="search" placeholder="Enter course name"/>
+    </form>
 </div>
 <!-- Модальное окно -->
 <#list courses as course>

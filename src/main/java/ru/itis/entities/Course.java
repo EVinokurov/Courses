@@ -93,7 +93,7 @@ public class Course {
     private Teacher teacher;    //Преподаватель курса
     private int quota;  //  Квота курса. Сколько человек может набрать преподаватель
     private boolean rating; //Принимает по рейтингу или нет(по собесу)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private Date deadline;  //Дедлайн подачи заявок
     private String section; //Блок курса. Например: научный
     private String presentation_path;   //хранит путь к файлам презентации

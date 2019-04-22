@@ -46,39 +46,41 @@ public class CourseController {
     @Autowired
     FileService fileService;
 
-     @GetMapping(value = "/course/{id}")
-      public String getCoursePage(@PathVariable long id, ModelMap model){
-          model.addAttribute("course", courseService.getCourseById(id));
-          return "course";
-      }
+    @GetMapping(value = "/course/{id}")
+    public String getCoursePage(@PathVariable long id, ModelMap model) {
+        model.addAttribute("course", courseService.getCourseById(id));
+        return "course";
+    }
 
-      //Get update post page
-      @GetMapping(value = "/edit/{id}")
-      public String getEditPage(@PathVariable long id,ModelMap modelMap) {
-          modelMap.addAttribute("course", courseService.getCourseById(id));
-          return "redact";
-      }
+    //Get update post page
+    @GetMapping(value = "/edit/{id}")
+    public String getEditPage(@PathVariable long id, ModelMap modelMap) {
+        modelMap.addAttribute("course", courseService.getCourseById(id));
+        modelMap.addAttribute("time", courseService.getCourseById(id).getDeadline().toString().split(" ")[0]);
+        return "redact";
+    }
 
-      //Redirect to update page
-      @GetMapping(value = "/posts", params = "id")
-      public String RedirectEditPage(@RequestParam long id){
-          return "redirect:/edit/" + id;
-      }
+    //Redirect to update page
+    @GetMapping(value = "/courses", params = "id")
+    public String RedirectEditPage(@RequestParam long id) {
+        return "redirect:/edit/" + id;
+    }
 
 
-      //Update course
-      @PostMapping(value = "/edit/{id}")
-      public String updateCourse(@PathVariable("id") long id, Course course, @RequestParam(value = "file", required = false) MultipartFile file){
-         fileService.chacngePresentationPath(id, file, course);
-          courseService.updateCourse(course);
-          return "redirect:/posts";
-      }
-      //Delete course
-      @PostMapping(value = "/posts", params = "id")
-      public String deleteCourse(@RequestParam(value = "id", required = false) long id) {
-          courseService.deleteCourse(id);
-          return "redirect:/posts";
-      }
+    //Update course
+    @PostMapping(value = "/edit/{id}")
+    public String updateCourse(@PathVariable("id") long id, Course course, @RequestParam(value = "file", required = false) MultipartFile file) {
+        fileService.chacngePresentationPath(id, file, course);
+        courseService.updateCourse(course);
+        return "redirect:/courses";
+    }
+
+    //Delete course
+    @PostMapping(value = "/courses", params = "id")
+    public String deleteCourse(@RequestParam(value = "id", required = false) long id) {
+        courseService.deleteCourse(id);
+        return "redirect:/courses";
+    }
 
 
     @GetMapping(value = "/course/{id}", params = "download")
@@ -90,14 +92,14 @@ public class CourseController {
 
 
     //Get create post page
-    @GetMapping("/create_course")
+    @GetMapping("/new")
     public String createCoursePage(ModelMap model) {
         model.addAttribute("teachers", teacherService.getAll());
         return "newCourse";
     }
 
     //Create course
-    @PostMapping("/create_course")
+    @PostMapping("/new")
     public String createCourse(@RequestParam("name") String name, @RequestParam("teacher") Long teacher,
                                @RequestParam("year") int year, @RequestParam("rating") boolean rating,
                                @RequestParam("section") String section, @RequestParam("quota") int quota,
@@ -105,7 +107,7 @@ public class CourseController {
                                @RequestParam(value = "file", required = false) MultipartFile file) {
         String filePath = fileService.uploadCoursesFiles(file, name);
         courseService.addCourse(new Course(name, descript, year, teacherService.getTeacherById(teacher), quota, rating, deadline, section, filePath));
-        return "redirect:/posts";
+        return "redirect:/courses";
     }
 
 
@@ -118,7 +120,7 @@ public class CourseController {
     }
 
     //Get all posts
-    @GetMapping("/posts")
+    @GetMapping("/courses")
     public String getAllPosts(ModelMap model) {
         List<Course> courses = courseService.getAllCourses();
         model.addAttribute("courses", courses);

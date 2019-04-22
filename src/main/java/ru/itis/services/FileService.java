@@ -18,18 +18,6 @@ public class FileService {
     @Autowired
     CourseService courseService;
 
-    /*public static String getFileToDB(MultipartFile multipartFile, String name){
-        String orgName = multipartFile.getOriginalFilename();
-        String filePath = "C:/files/" + name + "/" + orgName;
-        File dest = new File(filePath);
-        try {
-            multipartFile.transferTo(dest);
-        } catch (IllegalStateException | IOException e) {
-            e.printStackTrace();
-        }
-        return Paths.get(name,orgName).toString();
-    }
-*/
     private final String UPLOADED_FOLDER = "C://files//courses/";
 
     public void chacngePresentationPath(long id, MultipartFile file, Course course){

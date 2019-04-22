@@ -10,7 +10,7 @@
                 <div class="caption">
                     <h2> ${course.getName()}</h2>
                     <h4>Professor: Prepod1</h4>
-                    <p id="describtion">${course.getDescription()}</p>
+                    <p id="description">${course.getDescription()}</p>
                     <h5>Quota: ${course.getQuota()}</h5>
                     <#if course.isRating() == true>
                             <h5>Selection type: rating</h5>
@@ -18,7 +18,11 @@
                             <h5>Selection type: interview</h5>
                     </#if>
                     <h5>Section: ${course.getSection()}</h5>
+                    <#if course.getPresentation_path()??>
                     <h5>Presentation:</h5><form><input type="submit" name="download"  value="download"></form></h5>
+                    <#else>
+                    <h5>Presentation:</h5> No presentation</h5>
+                    </#if>
                     <h5>Deadline: ${course.getDeadline()}</h5>
 
                 </div>
