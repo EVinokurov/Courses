@@ -23,12 +23,4 @@ public class Teacher {
     private Course course;
     private String description;
     //private String avatar_path;
-
-
-    public Teacher(String name, String username, String password_hash, String description) {
-        this.name = name;
-        this.username = username;
-        this.passwordHash = password_hash;
-        this.description = description;
-    }
 }

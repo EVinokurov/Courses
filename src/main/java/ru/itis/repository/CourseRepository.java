@@ -10,8 +10,11 @@ import java.util.Optional;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findAll();
+
     Optional<Course> findByName(String name);
+
     Optional<Course> findBySection(String section);
+
     Optional<Course> findByRating(boolean rating);
 
 }

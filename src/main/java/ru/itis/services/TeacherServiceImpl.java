@@ -9,16 +9,20 @@ import ru.itis.repository.TeacherRepository;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
-    @Autowired
-    TeacherRepository teacherRepository;
+    private TeacherRepository teacherRepository;
 
+    @Autowired
+    public TeacherServiceImpl(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
+    }
 
     @Override
     public Teacher getTeacherById(Long id) {
-        return teacherRepository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return teacherRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override

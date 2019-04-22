@@ -12,17 +12,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 @Service
 public class FileService {
 
-    @Autowired
-    CourseService courseService;
-
     private final String UPLOADED_FOLDER = "C://files//courses/";
 
-    public void chacngePresentationPath(long id, MultipartFile file, Course course){
-        String previousPath = courseService.getCourseById(id).getPresentation_path();
-        if(!file.isEmpty()){
+    public void chacngePresentationPath(long id, MultipartFile file, Course course,
+                                        String previousPath) {
+        if (!file.isEmpty()) {
             String filepath = uploadCoursesFiles(file, course.getName());
             course.setPresentation_path(filepath);
         } else {
@@ -30,10 +28,8 @@ public class FileService {
         }
     }
 
-    public String uploadCoursesFiles(MultipartFile file,String name){
+    public String uploadCoursesFiles(MultipartFile file, String name) {
         if (!file.isEmpty()) {
-
-
             String uploadedCoursesFolder = "/" + name + "/";
             try {
 
@@ -47,14 +43,14 @@ public class FileService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return uploadedCoursesFolder +  file.getOriginalFilename();
+            return uploadedCoursesFolder + file.getOriginalFilename();
         } else {
             return null;
         }
 
     }
 
-    public void downloadFileToClient(String fileName, HttpServletResponse response){
+    public void downloadFileToClient(String fileName, HttpServletResponse response) {
         String path = UPLOADED_FOLDER + fileName;
         Path file = Paths.get(path);
         if (Files.exists(file)) {

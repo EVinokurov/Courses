@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface TeacherService {
 
     Teacher getTeacherById(Long id);
+
     List<Teacher> getAll();
 }
