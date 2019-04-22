@@ -56,7 +56,6 @@ public class CourseController {
     @GetMapping(value = "/edit/{id}")
     public String getEditPage(@PathVariable long id, ModelMap modelMap) {
         modelMap.addAttribute("course", courseService.getCourseById(id));
-        modelMap.addAttribute("time", courseService.getCourseById(id).getDeadline().toString().split(" ")[0]);
         return "redact";
     }
 

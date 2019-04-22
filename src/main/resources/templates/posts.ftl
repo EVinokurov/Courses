@@ -55,7 +55,7 @@
                         </#if>
                         <h5>Section: ${course.getSection()}</h5>
                         <h5>Presentation:</h5>
-                        <h5>Deadline: ${course.getDeadline()}</h5>
+                        <h5>Deadline: ${course.getDateToString()}</h5>
 
                         </form> <form method="get">
                         <p><button name="id" value="${course.getId()}" type="submit" class="btn btn-primary">

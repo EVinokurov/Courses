@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label>Deadline</label>
                         <label>
-                            <input type="date" name="deadline" value="${time}"  class="form-control"/>
+                            <input type="date" name="deadline" value="${course.getDateToString()}"  class="form-control"/>
                         </label>
                     </div>
                     <div class="form-group">
