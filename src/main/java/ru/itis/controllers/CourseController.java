@@ -34,6 +34,7 @@ public class CourseController {
     }
 
     public static final String COURSE_ATTRIBUTE_NAME = "course";
+    
 
     @GetMapping(value = "/course/{id}")
     public String getCoursePage(@PathVariable long id, ModelMap model) {
