@@ -10,16 +10,22 @@ import ru.itis.repository.CourseRepository;
 import ru.itis.repository.TeacherRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    @Autowired
     private CourseRepository courseRepository;
-    @Autowired
     private TeacherRepository teacherRepository;
+    private FileService fileService;
 
+    @Autowired
+    public CourseServiceImpl(CourseRepository courseRepository, TeacherRepository teacherRepository, FileService fileService) {
+        this.courseRepository = courseRepository;
+        this.teacherRepository = teacherRepository;
+        this.fileService = fileService;
+    }
 
     @Override
     public List<Course> getAllCourses() {
@@ -27,8 +33,20 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void addCourse(Course course) {
-        courseRepository.save(course);
+    public void addCourse(CourseForm courseForm) {
+        String filePath = fileService.uploadCoursesFiles(courseForm.getFile(), courseForm.getName());
+        Course newCourse = Course.builder()
+                .name(courseForm.getName())
+                .description(courseForm.getDescription())
+                .year(courseForm.getYear())
+                .teacher(teacherRepository.findTeacherById(courseForm.getTeacher()).orElseThrow(NoSuchElementException::new))
+                .quota(courseForm.getQuota())
+                .rating(courseForm.isRating())
+                .deadline(courseForm.getDeadline())
+                .section(courseForm.getSection())
+                .presentation_path(filePath)
+                .build();
+        courseRepository.save(newCourse);
     }
 
     @Override

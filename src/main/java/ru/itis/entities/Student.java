@@ -23,5 +23,4 @@ public class Student {
     private Set<CourseApply> courseApply;
 
 
-
 }

@@ -1,15 +1,14 @@
 package ru.itis.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
 @Data
 @Entity
@@ -24,12 +23,4 @@ public class Teacher {
     private Course course;
     private String description;
     //private String avatar_path;
-
-
-    public Teacher(String name, String username, String password_hash, String description) {
-        this.name = name;
-        this.username = username;
-        this.passwordHash = password_hash;
-        this.description = description;
-    }
 }
