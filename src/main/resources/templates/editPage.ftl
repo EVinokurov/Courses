@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label>Deadline</label>
                         <label>
-                            <input required type="date" name="deadline" value="${course.getDeadline()}"/>
+                            <input required type="date" name="deadline" pattern="YYYY-MM-DD" value="${course.getDeadline()?iso_utc}"/>
                         </label>
                     </div>
                     <div class="form-group">
