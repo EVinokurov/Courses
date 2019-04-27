@@ -30,6 +30,8 @@ public class Student {
     private Set<CourseApply> courseApply;
     @Enumerated(value = EnumType.STRING)
     private Role role;
+    @OneToOne(mappedBy = "student")
+    private User user;
 
     public Role getRole() {
         return role;

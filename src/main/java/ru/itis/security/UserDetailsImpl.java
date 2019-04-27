@@ -13,46 +13,16 @@ import java.util.Collections;
 
 
 public class UserDetailsImpl implements UserDetails {
-    private Student student;
-    private Teacher teacher;
-    private Admin admin;
+    private User user;
 
 
-    /*public UserDetailsImpl(User user) {
-        this.user = user;
-    }*/
-
-    public UserDetailsImpl(Long id, String role, String login) {
-        if (role.equals(Role.STUDENT)) {
-            this.student = Student.builder()
-                    .id(id)
-                    .role(Role.valueOf(role))
-                    .login(login)
-                    .build();
-        } else {
-            if (role.equals(Role.TEACHER)) {
-                this.teacher = Teacher.builder()
-                        .id(id)
-                        .role(Role.valueOf(role))
-                        .login(login)
-                        .build();
-            } else {
-                if (role.equals(Role.ADMIN)) {
-                    this.admin = Admin.builder()
-                            .id(id)
-                            .login(login)
-                            .role(Role.valueOf(role))
-                            .build();
-                }
-            }
-        }
-
+    public UserDetailsImpl(User user) {
+    this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        GrantedAuthority authority = new SimpleGrantedAuthority(.getRole().toString());
-        return Collections.singletonList(authority);
+        return null;
     }
 
 

@@ -23,11 +23,11 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public void signUp(SignUpForm form) {
-        if (form.getStudent()) {
+        if (form.getIsStudent()) {
             Student student = Student.builder()
                     .password(passwordEncoder.encode(form.getPassword()))
                     .name(form.getName())
-                    .sName(form.getsName())
+                    .sName(form.getSName())
                     .thName(form.getThName())
                     .login(form.getLogin())
                     .groupe(form.getGroupe())
@@ -35,9 +35,9 @@ public class SignUpServiceImpl implements SignUpService {
             studentRepository.save(student);
         }else{
             Teacher teacher = Teacher.builder()
-                    .passwordHash(passwordEncoder.encode(form.getPassword()))
+                    .password(passwordEncoder.encode(form.getPassword()))
                     .name(form.getName())
-                    .sName(form.getsName())
+                    .sName(form.getSName())
                     .thName(form.getThName())
                     .login(form.getLogin())
                     .build();

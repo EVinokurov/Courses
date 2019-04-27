@@ -7,7 +7,6 @@ import org.springframework.web.server.ResponseStatusException;
 import ru.itis.entities.Teacher;
 import ru.itis.repository.TeacherRepository;
 
-import java.util.Optional;
 @Service
 public class TeacherServiceImpl implements TeacherService {
 

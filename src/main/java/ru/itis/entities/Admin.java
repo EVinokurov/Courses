@@ -1,7 +1,5 @@
 package ru.itis.entities;
 
-import jdk.jfr.Enabled;
-import jdk.jfr.Name;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,4 +22,6 @@ public class Admin {
     private String password;
     @Enumerated(value = EnumType.STRING)
     private Role role;
+    @OneToOne(mappedBy = "admin")
+    private User user;
 }
