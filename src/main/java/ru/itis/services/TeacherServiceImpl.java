@@ -11,11 +11,14 @@ import ru.itis.repository.TeacherRepository;
 public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
-    TeacherRepository teacherRepository;
-
+    private TeacherRepository teacherRepository;
 
     @Override
     public Teacher getTeacherById(Long id) {
         return teacherRepository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    public Teacher save(Teacher teacher) {
+        return teacherRepository.save(teacher);
     }
 }

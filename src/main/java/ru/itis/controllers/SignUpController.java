@@ -13,14 +13,14 @@ public class SignUpController {
     @Autowired
     private SignUpService signUpService;
 
-    @GetMapping("/login")
+    @GetMapping("/sign-up")
     public String getSignUpPage() {
         return "sign_up";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/sign-up")
     public String signUpUser(SignUpForm signUpForm) {
         signUpService.signUp(signUpForm);
-        return "redirect:/signIn";
+        return "redirect:/hello";
     }
 }

@@ -1,6 +1,7 @@
 package ru.itis.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -14,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
-public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -22,27 +23,43 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
+    @Qualifier("customUserDetailsService")
     private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/signUp").permitAll()
-                .antMatchers("/hello").authenticated()
+//        http
+//                .formLogin()
+//                    .loginPage("/signIn")
+//                    .usernameParameter("login")
+//                    .passwordParameter("password")
+//                    .successForwardUrl("/hello")
+//                    .failureForwardUrl("/signIn?error")
+//                    .and()
+//                .authorizeRequests()
+//                    .antMatchers("/posts","hello").authenticated()
+//                    .antMatchers("/sign-in","/sign-up").permitAll()
+//                    .and();
+        http.authorizeRequests()
+                .antMatchers("/user/**").hasAuthority("USER")
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/sign-up").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/signIn")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .failureUrl("/signIn?error")
+                .formLogin().loginPage("/sign-in")
+                .usernameParameter("sign-in")
+                .defaultSuccessUrl("/")
+                .failureUrl("/sign-in?error")
                 .permitAll()
-                .defaultSuccessUrl("/hello")
                 .and()
-                .logout().logoutSuccessUrl("/signIn")
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/signIn")
                 .permitAll();
     }
+
     @Bean
     public DaoAuthenticationProvider authProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.itis.entities.User;
 import ru.itis.services.UserService;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Component(value = "customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired

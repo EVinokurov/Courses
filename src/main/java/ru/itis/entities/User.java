@@ -1,6 +1,9 @@
 package ru.itis.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.itis.security.Role;
 
 import javax.persistence.*;
@@ -10,6 +13,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
+@Table(name = "USERS")
 public class User {
 
     @Id
@@ -19,14 +23,14 @@ public class User {
     private String password;
     private Role role;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacher_id")
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @JoinColumn(name = "id")
     private Teacher teacher;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "admin_id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @JoinColumn(name = "id")
     private Admin admin;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Student student;
 
 }

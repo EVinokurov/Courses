@@ -5,5 +5,5 @@ import ru.itis.entities.Teacher;
 
 public interface TeacherService {
 
-    Teacher getTeacherById(Long id);
+    public Teacher getTeacherById(Long id);
 }
