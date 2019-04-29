@@ -1,6 +1,7 @@
-package ru.itis.security.details;
+package ru.itis.security;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private User user;
 
+    @Autowired
     public UserDetailsImpl(User user) {
         this.user = user;
     }
@@ -52,7 +54,6 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 
     public User getUser() {
         return user;

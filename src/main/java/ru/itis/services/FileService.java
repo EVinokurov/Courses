@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 @Service
 public class FileService {
 
-
     public static String getFileToDB(MultipartFile multipartFile, HttpServletRequest request, String name){
         String orgName = multipartFile.getOriginalFilename();
         String filePath = request.getServletContext().getRealPath("WEB-INF/files/courses/" + name + "/" + orgName);

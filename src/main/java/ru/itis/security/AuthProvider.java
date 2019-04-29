@@ -1,4 +1,4 @@
-package ru.itis.security.providers;
+package ru.itis.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,8 +29,13 @@ import java.util.Optional;
 @Component
 public class AuthProvider implements AuthenticationProvider {
 
-    @Autowired
     UserRepository usersRepository;
+
+    @Autowired
+    public AuthProvider(UserRepository usersRepository, PasswordEncoder passwordEncoder) {
+        this.usersRepository = usersRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Autowired
     @Qualifier(value = "customUserDetailsServiceImpl")
@@ -58,9 +63,7 @@ public class AuthProvider implements AuthenticationProvider {
         } else {
             throw new BadCredentialsException("Wrong password or login");
         }
-
         // сюда попадем, если заходит либо пользователь с нормальным паролем
-
         // загружаем details пользователя по имени
         UserDetails details = userDetailsService.loadUserByUsername(username);
         // получаем его права ADMIN либо USER

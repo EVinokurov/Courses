@@ -1,6 +1,7 @@
-package ru.itis.security.role;
+package ru.itis.security;
 
 public enum Role {
+
     ADMIN,
     TEACHER,
     STUDENT;

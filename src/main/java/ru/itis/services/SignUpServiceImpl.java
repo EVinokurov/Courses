@@ -7,7 +7,7 @@ import ru.itis.entities.Student;
 import ru.itis.entities.Teacher;
 import ru.itis.entities.User;
 import ru.itis.forms.SignUpForm;
-import ru.itis.security.role.Role;
+import ru.itis.security.Role;
 
 @Service
 public class SignUpServiceImpl implements SignUpService {

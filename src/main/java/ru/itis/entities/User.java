@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.itis.security.role.Role;
+import ru.itis.security.Role;
 
 import javax.persistence.*;
 

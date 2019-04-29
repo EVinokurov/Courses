@@ -1,5 +1,6 @@
 package ru.itis.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 public class SignInController {
 
     private SignInService signInService;
+
+    @Autowired
+    public SignInController(SignInService signInService) {
+        this.signInService = signInService;
+    }
 
     @GetMapping("/sign-in")
     public String getSignInPage(HttpServletRequest request, ModelMap model) {

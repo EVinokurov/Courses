@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Data
 @Entity
 public class Teacher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

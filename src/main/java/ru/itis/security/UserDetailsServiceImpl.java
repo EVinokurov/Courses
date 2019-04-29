@@ -1,4 +1,4 @@
-package ru.itis.security.details;
+package ru.itis.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,12 +9,6 @@ import org.springframework.stereotype.Service;
 import ru.itis.entities.User;
 import ru.itis.repository.UserRepository;
 
-/**
- * 05.08.2017
- *
- * @author Marsel Sidikov (First Software Engineering Platform)
- * @version 1.0
- */
 @Service
 @Component(value = "customUserDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {

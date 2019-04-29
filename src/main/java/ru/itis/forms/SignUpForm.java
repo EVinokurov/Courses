@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class SignUpForm {
+
     private String fName;
     private String sName;
     private String thName;
