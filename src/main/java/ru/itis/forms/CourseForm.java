@@ -4,7 +4,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.Date;
 
 @Builder
@@ -13,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class CourseForm {
+
     String name;    //Название курса
     String description; //Описание курса
     int year;   //Год курса - номер года обучения студентов, которые могут на него записаться

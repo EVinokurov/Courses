@@ -1,10 +1,8 @@
 package ru.itis.entities;
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,12 +14,14 @@ import java.util.Set;
 @Getter
 @Setter
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;    //Название курса
     private String description; //Описание курса
     private int year;   //Год курса - номер года обучения студентов, которые могут на него записаться
+
     @OneToOne
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;    //Преподаватель курса

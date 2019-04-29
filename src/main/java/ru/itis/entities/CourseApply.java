@@ -13,11 +13,14 @@ import javax.persistence.*;
 @Builder
 @Entity
 public class CourseApply {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     private Student student;
+
     @ManyToOne
     private Course course;
     private boolean isApply;

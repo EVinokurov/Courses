@@ -11,11 +11,11 @@ import ru.itis.repository.TeacherRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
+    @Autowired
     private CourseRepository courseRepository;
     private TeacherRepository teacherRepository;
     private FileService fileService;

@@ -4,10 +4,10 @@ import ru.itis.entities.Course;
 import ru.itis.forms.CourseForm;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CourseService {
     List<Course> getAllCourses();
+
 
     void addCourse(CourseForm course);
 
