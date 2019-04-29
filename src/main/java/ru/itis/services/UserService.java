@@ -5,5 +5,8 @@ import ru.itis.entities.User;
 
 @Service
 public interface UserService {
+
     User getUser(String login);
+
+    User save(User user);
 }

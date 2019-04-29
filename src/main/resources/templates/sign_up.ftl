@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!- ОПИСАНИЕ ВКЛАДОК С ФОРМАМИ ->
 <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -19,11 +20,11 @@
            aria-selected="false">Студент</a>
     </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
+    <!- ФОРМА РЕГИСТРАЦИИ УЧИТЕЛЯ->
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
-
-        <form id="2" action="/sign-up" method="post">
-
+        <form id="1" action="http://localhost:8080/sign-up-teacher" method="post">
             <div class="row">
                 <div class="col">
                     <input name="sName" type="text" class="form-control" placeholder="Фамилия">
@@ -40,18 +41,17 @@
                 <input name="login" type="email" class="form-control" id="login" aria-describedby="emailHelp"
                        placeholder="Введите почту @stud.kpfu.ru">
                 <br>
-                <input name="password" type="password" class="form-control" id="password" placeholder="Введите пароль">
+                <input name="hashPassword" type="password" class="form-control" id="password"
+                       placeholder="Введите пароль">
             </div>
             <button type="submit" class="btn btn-primary">Регистрация</button>
 
             <input type="hidden" name="role" value="2">
         </form>
     </div>
-
+    <!- ФОРМА РЕГИСТРАЦИИ СТУДЕНТА->
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br>
-
-        <form id="1" action="/sign-up" method="post">
-
+        <form id="2" action="/sign-up-student" method="post">
             <div class="row">
                 <div class="col">
                     <input name="sName" type="text" class="form-control" placeholder="Фамилия">
@@ -64,7 +64,6 @@
                 </div>
             </div>
             <br>
-
             <div class="row">
                 <div class="col">
                     <input name="group" type="text" class="form-control" placeholder="Группа">
@@ -84,32 +83,15 @@
             </div>
             <div class="form-group">
                 <br>
-                <input name="password" type="password" class="form-control" id="pass" placeholder="Пароль">
+                <input name="password" type="hashPassword" class="form-control" id="pass" placeholder="Пароль">
                 <br>
-                <input type="password" class="form-control" id="repPass" placeholder="Повторите пароль">
+                <input type="hashPassword" class="form-control" id="repPass" placeholder="Повторите пароль">
             </div>
             <button type="submit" class="btn btn-primary">Регистрация</button>
             <input type="hidden" name="role" value="1">
         </form>
     </div>
 </div>
-
-<script src="jquery.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#repPass').change(function () {
-            var pass = $("#pass").val();
-            var pass_rep = $("#repPass").val();
-
-            if (pass != pass_rep) {
-                $("#repPass").css('border', 'red 1px solid');
-                $('#errorBlock').html('Пароли не совпадают');
-            }
-        });
-    });
-</script>
-<div id="errorBlock"></div>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -10,8 +10,12 @@ import ru.itis.repository.TeacherRepository;
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
-    @Autowired
     private TeacherRepository teacherRepository;
+
+    @Autowired
+    public TeacherServiceImpl(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
+    }
 
     @Override
     public Teacher getTeacherById(Long id) {

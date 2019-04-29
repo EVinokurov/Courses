@@ -5,9 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import ru.itis.entities.Course;
-
 import ru.itis.repository.CourseRepository;
-import ru.itis.repository.TeacherRepository;
 
 import java.util.List;
 
@@ -15,11 +13,12 @@ import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    @Autowired
     private CourseRepository courseRepository;
-    @Autowired
-    private TeacherRepository teacherRepository;
 
+    @Autowired
+    public CourseServiceImpl(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
     @Override
     public List<Course> getAllCourses() {

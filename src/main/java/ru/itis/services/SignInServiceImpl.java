@@ -11,7 +11,7 @@ public class SignInServiceImpl implements SignInService {
     public void signIn(SignInForm form) {
         User user = User.builder()
                 .login(form.getLogin())
-                .password(form.getPassword())
+                .hashPassword(form.getPassword())
                 .build();
     }
 }
