@@ -1,6 +1,7 @@
 package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.entities.Student;
@@ -18,7 +19,7 @@ public class SignUpServiceImpl implements SignUpService {
     private UserService userService;
 
     @Autowired
-    public SignUpServiceImpl(PasswordEncoder passwordEncoder, TeacherService teacherService, StudentService studentService, UserService userService) {
+    public SignUpServiceImpl(@Lazy PasswordEncoder passwordEncoder, TeacherService teacherService, StudentService studentService, UserService userService) {
         this.passwordEncoder = passwordEncoder;
         this.teacherService = teacherService;
         this.studentService = studentService;
