@@ -27,20 +27,25 @@
         <form id="1" action="http://localhost:8080/sign-up-teacher" method="post">
             <div class="row">
                 <div class="col">
+                    <!- ФАМИЛИЯ ->
                     <input name="sName" type="text" class="form-control" placeholder="Фамилия">
                 </div>
                 <div class="col">
+                    <!- ИМЯ ->
                     <input name="fName" type="text" class="form-control" placeholder="Имя">
                 </div>
                 <div class="col">
+                    <!- ОТЧЕСТВО ->
                     <input name="thName" type="text" class="form-control" placeholder="Отчество">
                 </div>
             </div>
             <br>
             <div class="form-group">
+                <!- ПОЧТА ->
                 <input name="login" type="email" class="form-control" id="login" aria-describedby="emailHelp"
                        placeholder="Введите почту @stud.kpfu.ru">
                 <br>
+                <!- ПАРОЛЬ ->
                 <input name="hashPassword" type="password" class="form-control" id="password"
                        placeholder="Введите пароль">
             </div>
@@ -54,25 +59,31 @@
         <form id="2" action="/sign-up-student" method="post">
             <div class="row">
                 <div class="col">
+                    <!- ФАМИЛИЯ ->
                     <input name="sName" type="text" class="form-control" placeholder="Фамилия">
                 </div>
                 <div class="col">
+                    <!- ИМЯ ->
                     <input name="fName" type="text" class="form-control" placeholder="Имя">
                 </div>
                 <div class="col">
+                    <!- ОТЧЕСТВО ->
                     <input name="thName" type="text" class="form-control" placeholder="Отчество">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col">
-                    <input name="group" type="text" class="form-control" placeholder="Группа">
+                    <!- ГРУППА ->
+                    <input name="groupNumber" type="text" class="form-control" placeholder="Группа">
                 </div>
                 <div class="col">
+                    <!- ПОЧТА ->
                     <input name="login" type="email" class="form-control" id="login" aria-describedby="emailHelp"
                            placeholder="Почта @stud.kpfu.ru">
                 </div>
                 <div class="col">
+                    <!- КУРС ->
                     <select name="courseNumber" class="form-control" id="exampleFormControlSelect1">
                         <option value="1">1 курс</option>
                         <option value="2">2 курс</option>
@@ -83,9 +94,11 @@
             </div>
             <div class="form-group">
                 <br>
-                <input name="password" type="hashPassword" class="form-control" id="pass" placeholder="Пароль">
+                <!- ПАРОЛЬ ->
+                <input name="hashPassword" type="password" class="form-control" id="pass" placeholder="Пароль">
                 <br>
-                <input type="hashPassword" class="form-control" id="repPass" placeholder="Повторите пароль">
+                <!- ПОВТОР ПАРОЛЯ ->
+                <input type="password" class="form-control" id="repPass" placeholder="Повторите пароль">
             </div>
             <button type="submit" class="btn btn-primary">Регистрация</button>
             <input type="hidden" name="role" value="1">

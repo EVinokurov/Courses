@@ -21,7 +21,7 @@ public class Student {
     private String fName;
     private String sName;
     private String thName;
-    private String group;
+    private String groupNumber;
     private int courseNumber;  //на каком курсе учится
 
     @OneToMany(mappedBy = "student")

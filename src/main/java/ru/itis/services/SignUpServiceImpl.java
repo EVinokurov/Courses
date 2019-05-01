@@ -53,7 +53,7 @@ public class SignUpServiceImpl implements SignUpService {
                 .fName(form.getFName())
                 .sName(form.getSName())
                 .thName(form.getThName())
-                .group(form.getGroup())
+                .groupNumber(form.getGroupNumber())
                 .courseNumber(form.getCourseNumber())
                 .user(signUpUser(form))
                 .build();

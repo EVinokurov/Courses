@@ -15,7 +15,7 @@ public class SignUpForm {
     private String login;
     private String hashPassword;
     private int role;
-    private String group;
+    private String groupNumber;
     private int courseNumber;
 }
 

@@ -19,22 +19,14 @@ import ru.itis.repository.UserRepository;
 import java.util.Collection;
 import java.util.Optional;
 
-/**
- * 17.11.2017
- * AuthProvider
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 @Component
 public class AuthProvider implements AuthenticationProvider {
 
     private UserRepository usersRepository;
 
     @Autowired
-    public AuthProvider(UserRepository usersRepository, PasswordEncoder passwordEncoder) {
+    public AuthProvider(UserRepository usersRepository) {
         this.usersRepository = usersRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Autowired
