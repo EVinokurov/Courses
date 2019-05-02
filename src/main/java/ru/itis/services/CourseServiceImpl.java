@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    @Autowired
+
     private CourseRepository courseRepository;
     private TeacherRepository teacherRepository;
     private FileService fileService;
