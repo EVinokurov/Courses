@@ -27,11 +27,13 @@ public class Course {
     private Teacher teacher;
     private int quota;
     private boolean rating;
+
     @Temporal(TemporalType.DATE)
     private Date deadline;
     private String section;
     private String presentation_path;
     private boolean openForApplications;
+
     @OneToMany(mappedBy = "course")
     private Set<CourseApply> courseApply;
 }

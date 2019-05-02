@@ -19,6 +19,7 @@ public class CourseForm {
     Long teacher;
     int quota;
     boolean rating;
+
     @Future
     Date deadline;
     String section;
