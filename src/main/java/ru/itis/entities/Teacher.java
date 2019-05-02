@@ -29,6 +29,5 @@ public class Teacher {
     @OneToOne(mappedBy = "teacher")
     private Course course;
     private String description;
-    //private String avatar_path;
 
 }

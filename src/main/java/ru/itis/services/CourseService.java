@@ -18,5 +18,5 @@ public interface CourseService {
 
     String getFile(String path);
 
-    List<Course> getAllCoursesWithFalseForApplications();
+    List<Course> findAllCoursesForApplicationsIsTrueAndDeadlineBefore();
 }

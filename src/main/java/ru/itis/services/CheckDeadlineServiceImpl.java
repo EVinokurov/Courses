@@ -20,7 +20,7 @@ public class CheckDeadlineServiceImpl implements CheckDeadlineService {
     @Override
     public void checkDeadline() {
         for (Course course :
-                courseService.getAllCoursesWithFalseForApplications()) {
+                courseService.findAllCoursesForApplicationsIsTrueAndDeadlineBefore()) {
             if (course.getDeadline().before(new Date())) {
                 course.setOpenForApplications(false);
                 courseService.updateCourse(course);

@@ -32,7 +32,6 @@ public class FileService {
         if (!file.isEmpty()) {
             String uploadedCoursesFolder = "/" + name + "/";
             try {
-
                 // Get the file and save it somewhere
                 byte[] bytes = file.getBytes();
                 File dir = new File(UPLOADED_FOLDER + uploadedCoursesFolder);
@@ -47,7 +46,6 @@ public class FileService {
         } else {
             return null;
         }
-
     }
 
     public void downloadFileToClient(String fileName, HttpServletResponse response) {

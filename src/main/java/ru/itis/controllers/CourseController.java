@@ -38,27 +38,23 @@ public class CourseController {
 
     public static final String COURSE_ATTRIBUTE_NAME = "course";
 
-
     @GetMapping(value = "/course/{id}")
     public String getCoursePage(@PathVariable long id, ModelMap model) {
         model.addAttribute(COURSE_ATTRIBUTE_NAME, courseService.getCourseById(id));
         return "oneCoursePage";
     }
 
-    //Get update post page
     @GetMapping(value = "/edit/{id}")
     public String getEditPage(@PathVariable long id, ModelMap modelMap) {
         modelMap.addAttribute(COURSE_ATTRIBUTE_NAME, courseService.getCourseById(id));
         return "editPage";
     }
 
-    //Redirect to update page
     @GetMapping(value = "/courses", params = "id")
     public String RedirectEditPage(@RequestParam long id) {
         return "redirect:/edit/" + id;
     }
 
-    //Update course
     @PostMapping(value = "/edit/{id}")
     public String updateCourse(@PathVariable("id") long id, Course course,
                                @RequestParam(value = "file", required = false) MultipartFile file) {
@@ -68,7 +64,6 @@ public class CourseController {
         return "redirect:/courses";
     }
 
-    //Delete course
     @PostMapping(value = "/courses", params = "id")
     public String deleteCourse(@RequestParam(value = "id") long id) {
         courseService.deleteCourse(id);
@@ -82,26 +77,23 @@ public class CourseController {
         fileService.downloadFileToClient(fileName, response);
     }
 
-    //Get create post page
     @GetMapping("/new")
     public String createCoursePage(ModelMap model) {
         model.addAttribute("teachers", teacherService.getAll());
         return "newCourse";
     }
 
-    //Create course
     @PostMapping("/new")
     public String createCourse(@Valid CourseForm courseForm, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()){
             model.addAttribute("error", "error");
-            model.addAttribute("course", courseForm);
+            model.addAttribute(COURSE_ATTRIBUTE_NAME, courseForm);
             return "newCourse";
         }
         courseService.addCourse(courseForm);
         return "redirect:/courses";
     }
 
-    //Edit String to Date format
     @InitBinder
     public void initBinder(WebDataBinder wb) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -109,7 +101,6 @@ public class CourseController {
         wb.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 
-    //Get all posts
     @GetMapping("/courses")
     public String getAllPosts(ModelMap model) {
         model.addAttribute("courses", courseService.getAllCourses());

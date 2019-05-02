@@ -16,7 +16,6 @@ import java.util.NoSuchElementException;
 @Service
 public class CourseServiceImpl implements CourseService {
 
-
     private CourseRepository courseRepository;
     private TeacherRepository teacherRepository;
     private FileService fileService;
@@ -72,7 +71,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getAllCoursesWithFalseForApplications() {
+    public List<Course>  findAllCoursesForApplicationsIsTrueAndDeadlineBefore() {
         return courseRepository.findAllByOpenForApplicationsIsTrueAndDeadlineBefore(new Date());
     }
 }
