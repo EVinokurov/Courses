@@ -9,6 +9,7 @@ import ru.itis.forms.CourseForm;
 import ru.itis.repository.CourseRepository;
 import ru.itis.repository.TeacherRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -68,5 +69,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public String getFile(String path) {
         return path;
+    }
+
+    @Override
+    public List<Course> getAllCoursesWithFalseForApplications() {
+        return courseRepository.findAllByOpenForApplicationsIsTrueAndDeadlineBefore(new Date());
     }
 }

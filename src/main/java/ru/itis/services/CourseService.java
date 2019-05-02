@@ -8,7 +8,6 @@ import java.util.List;
 public interface CourseService {
     List<Course> getAllCourses();
 
-
     void addCourse(CourseForm course);
 
     void deleteCourse(Long id);
@@ -18,4 +17,6 @@ public interface CourseService {
     Course getCourseById(Long id);
 
     String getFile(String path);
+
+    List<Course> getAllCoursesWithFalseForApplications();
 }

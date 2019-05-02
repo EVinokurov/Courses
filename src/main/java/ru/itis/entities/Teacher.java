@@ -31,5 +31,4 @@ public class Teacher {
     private String description;
     //private String avatar_path;
 
-
 }

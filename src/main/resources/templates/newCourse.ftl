@@ -1,5 +1,5 @@
 <html>
-<title>Posts</title>
+<title>New</title>
 <body>
 
 <form method="post" enctype="multipart/form-data">
@@ -66,5 +66,9 @@
         </div>
     </div>
 </form>
+<#if error??>
+    <h1>Обкекался?</h1>
+</#if>
 
 </body>
+</html>

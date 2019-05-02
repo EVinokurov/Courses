@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +14,9 @@ import ru.itis.services.CourseService;
 import ru.itis.services.FileService;
 import ru.itis.services.TeacherService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +37,7 @@ public class CourseController {
     }
 
     public static final String COURSE_ATTRIBUTE_NAME = "course";
-    
+
 
     @GetMapping(value = "/course/{id}")
     public String getCoursePage(@PathVariable long id, ModelMap model) {
@@ -88,7 +91,12 @@ public class CourseController {
 
     //Create course
     @PostMapping("/new")
-    public String createCourse(CourseForm courseForm) {
+    public String createCourse(@Valid CourseForm courseForm, BindingResult bindingResult, ModelMap model) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute("error", "error");
+            model.addAttribute("course", courseForm);
+            return "newCourse";
+        }
         courseService.addCourse(courseForm);
         return "redirect:/courses";
     }
