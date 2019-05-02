@@ -1,5 +1,6 @@
 package ru.itis.entities;
 
+import com.sun.istack.internal.Nullable;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class Course {
     private Date deadline;  //Дедлайн подачи заявок
     private String section; //Блок курса. Например: научный
     private String presentation_path;   //хранит путь к файлам презентации
+    private boolean openForApplications;
     @OneToMany(mappedBy = "course")
     private Set<CourseApply> courseApply;
 }

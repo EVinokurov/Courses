@@ -45,6 +45,7 @@ public class CourseServiceImpl implements CourseService {
                 .deadline(courseForm.getDeadline())
                 .section(courseForm.getSection())
                 .presentation_path(filePath)
+                .openForApplications(true)
                 .build();
         courseRepository.save(newCourse);
     }

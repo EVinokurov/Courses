@@ -16,7 +16,7 @@
                         <label for="input">Professor</label>
                         <select required class="form-control" name="teacher" id="exampleFormControlSelect1">
                             <#list teachers as teacher>
-                            <option value="${teacher.getId()}">${teacher.getName()}</option>
+                            <option value="${teacher.getId()}">${teacher.getId()}</option>
                             </#list>
                         </select>
 
