@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableScheduling
-@SpringBootApplication//(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class CourseApplication {
 
 	public static void main(String[] args) {
