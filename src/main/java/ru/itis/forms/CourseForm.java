@@ -13,15 +13,15 @@ import java.util.Date;
 @Setter
 public class CourseForm {
 
-    String name;    //Название курса
-    String description; //Описание курса
-    int year;   //Год курса - номер года обучения студентов, которые могут на него записаться
-    Long teacher;    //Преподаватель курса
-    int quota;  //  Квота курса. Сколько человек может набрать преподаватель
-    boolean rating; //Принимает по рейтингу или нет(по собесу)
+    String name;
+    String description;
+    int year;
+    Long teacher;
+    int quota;
+    boolean rating;
     @Future
-    Date deadline;  //Дедлайн подачи заявок
-    String section; //Блок курса. Например: научный
+    Date deadline;
+    String section;
     MultipartFile file;
 }
 

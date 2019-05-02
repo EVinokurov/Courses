@@ -22,7 +22,7 @@ public class Student {
     private String sName;
     private String thName;
     private String groupNumber;
-    private int courseNumber;  //на каком курсе учится
+    private int courseNumber;
 
     @OneToMany(mappedBy = "student")
     private Set<CourseApply> courseApply;
