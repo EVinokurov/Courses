@@ -1,6 +1,5 @@
 package ru.itis.entities;
 
-import com.sun.istack.internal.Nullable;
 import lombok.*;
 
 import javax.persistence.*;

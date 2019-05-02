@@ -17,11 +17,9 @@ public class CheckDeadlineServiceImpl implements CheckDeadlineService {
     }
 
     //every day at 12 pm
-    //cron = "0 0 12 * * ?"
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "0 0 12 * * ?")
     @Override
     public void checkDeadline() {
-        System.out.println("TIME!");
         for (Course course :
                 courseService.getAllCourses()) {
             if (course.getDeadline().before(new Date())) {
