@@ -7,10 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-<<<<<<< HEAD
-=======
 @EnableScheduling
->>>>>>> check_deadlines_for_courses
 @SpringBootApplication
 public class CourseApplication {
 
