@@ -3,6 +3,7 @@ package ru.itis.services;
 import ru.itis.entities.Course;
 import ru.itis.forms.CourseForm;
 
+import java.util.Date;
 import java.util.List;
 
 public interface CourseService {
@@ -18,5 +19,5 @@ public interface CourseService {
 
     String getFile(String path);
 
-    List<Course> findAllCoursesByDeadlineBefore();
+    List<Course> findAllByCoursesOpenForApplicationsAndDeadlineBefore(Date date);
 }

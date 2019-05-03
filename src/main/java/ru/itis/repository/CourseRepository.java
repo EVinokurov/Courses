@@ -18,5 +18,5 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
     Optional<Course> findByRating(boolean rating);
 
-    List<Course> findAllByDeadlineBefore(Date date);
+    List<Course> findAllByOpenForApplicationsIsTrueAndDeadlineBefore(Date date);
 }
