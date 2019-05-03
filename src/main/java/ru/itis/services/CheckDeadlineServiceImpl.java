@@ -19,8 +19,7 @@ public class CheckDeadlineServiceImpl implements CheckDeadlineService {
     @Scheduled(cron = "0 0 12 * * ?")
     @Override
     public void closeCoursesForApplicationsWithOverDueDeadline() {
-        Date date = new Date();
-        courseService.findAllByCoursesOpenForApplicationsAndDeadlineBefore(date)
+        courseService.findAllByCoursesOpenForApplicationsAndDeadlineBefore(new Date())
                 .forEach(
                         course -> {
                             course.setOpenForApplications(false);
