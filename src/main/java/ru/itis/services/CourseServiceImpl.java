@@ -71,7 +71,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> findAllCoursesForApplicationsIsTrueAndDeadlineBefore() {
-        return courseRepository.findAllByOpenForApplicationsIsTrueAndDeadlineBefore(new Date());
+    public List<Course> findAllCoursesByDeadlineBefore() {
+        return courseRepository.findAllByDeadlineBefore(new Date());
     }
 }
