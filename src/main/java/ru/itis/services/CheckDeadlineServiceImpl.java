@@ -20,12 +20,13 @@ public class CheckDeadlineServiceImpl implements CheckDeadlineService {
     @Scheduled(cron = "0 0 12 * * ?")
     @Override
     public void checkDeadline() {
-        for (Course course :
-                courseService.findAllCoursesForApplicationsIsTrueAndDeadlineBefore()) {
-            if (course.getDeadline().before(new Date())) {
-                course.setOpenForApplications(false);
-                courseService.updateCourse(course);
-            }
-        }
+        courseService.findAllCoursesForApplicationsIsTrueAndDeadlineBefore()
+                .forEach(
+                        course -> {
+                            if (course.getDeadline().before(new Date())) {
+                                course.setOpenForApplication(false);
+                                courseService.updateCourse(course);
+                            }
+                        });
     }
 }
