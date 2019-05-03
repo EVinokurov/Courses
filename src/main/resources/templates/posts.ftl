@@ -45,7 +45,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <a href="/course/${course.getId()}"><h2>  ${course.getName()}</h2>  </a>
-                        <h4>Professor: ${course.getTeacher().getName()}</h4>
+                        <h4>Professor: </h4>
                         <p id="describtion">${course.getDescription()}</p>
                         <h5>Quota: ${course.getQuota()}</h5>
                         <#if course.isRating() == true>

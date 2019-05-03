@@ -2,6 +2,7 @@ package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import ru.itis.entities.Course;
@@ -9,13 +10,13 @@ import ru.itis.forms.CourseForm;
 import ru.itis.repository.CourseRepository;
 import ru.itis.repository.TeacherRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    @Autowired
     private CourseRepository courseRepository;
     private TeacherRepository teacherRepository;
     private FileService fileService;
@@ -45,6 +46,7 @@ public class CourseServiceImpl implements CourseService {
                 .deadline(courseForm.getDeadline())
                 .section(courseForm.getSection())
                 .presentation_path(filePath)
+                .openForApplications(true)
                 .build();
         courseRepository.save(newCourse);
     }
@@ -67,5 +69,21 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public String getFile(String path) {
         return path;
+    }
+
+    @Override
+    public List<Course> findAllByCoursesOpenForApplicationsAndDeadlineBefore(Date date) {
+        return courseRepository.findAllByOpenForApplicationsIsTrueAndDeadlineBefore(date);
+    }
+
+    @Scheduled(cron = "0 0 12 * * ?")
+    @Override
+    public void closeCoursesForApplicationsWithOverDueDeadline() {
+        findAllByCoursesOpenForApplicationsAndDeadlineBefore(new Date())
+                .forEach(
+                        course -> {
+                            course.setOpenForApplications(false);
+                            updateCourse(course);
+                        });
     }
 }
