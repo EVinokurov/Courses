@@ -20,4 +20,6 @@ public interface CourseService {
     String getFile(String path);
 
     List<Course> findAllByCoursesOpenForApplicationsAndDeadlineBefore(Date date);
+
+    void closeCoursesForApplicationsWithOverDueDeadline();
 }

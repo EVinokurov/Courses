@@ -2,6 +2,7 @@ package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import ru.itis.entities.Course;
@@ -73,5 +74,16 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> findAllByCoursesOpenForApplicationsAndDeadlineBefore(Date date) {
         return courseRepository.findAllByOpenForApplicationsIsTrueAndDeadlineBefore(date);
+    }
+
+    @Scheduled(cron = "0 0 12 * * ?")
+    @Override
+    public void closeCoursesForApplicationsWithOverDueDeadline() {
+        findAllByCoursesOpenForApplicationsAndDeadlineBefore(new Date())
+                .forEach(
+                        course -> {
+                            course.setOpenForApplications(false);
+                            updateCourse(course);
+                        });
     }
 }
