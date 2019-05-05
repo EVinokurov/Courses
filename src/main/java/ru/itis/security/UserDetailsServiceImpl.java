@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import ru.itis.entities.User;
-import ru.itis.repository.UserRepository;
+import ru.itis.user.User;
+import ru.itis.user.UserRepository;
 
 @Service
 @Component(value = "customUserDetailsServiceImpl")
@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         User user = usersRepository.findOneByLogin(login).orElseThrow(()
-                -> new IllegalArgumentException("User not found by login <" + login + ">"));
+                -> new IllegalArgumentException("user not found by login <" + login + ">"));
         return new UserDetailsImpl(user);
     }
 }
