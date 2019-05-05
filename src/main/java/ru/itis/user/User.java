@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.itis.admin.Admin;
 import ru.itis.security.Role;
 import ru.itis.student.Student;
 import ru.itis.teacher.Teacher;
@@ -30,10 +29,6 @@ public class User {
     @JoinColumn(name = "id")
     private Teacher teacher;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-    @JoinColumn(name = "id")
-
-    private Admin admin;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Student student;
 }
