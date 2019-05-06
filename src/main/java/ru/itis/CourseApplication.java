@@ -19,4 +19,5 @@ public class CourseApplication {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
