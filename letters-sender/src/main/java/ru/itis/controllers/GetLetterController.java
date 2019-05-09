@@ -17,7 +17,7 @@ public class GetLetterController {
         this.letterService = letterService;
     }
 
-    @PostMapping(value = "/confirm")
+    @PostMapping("/confirm")
     public void getStringFromServer(@RequestBody String letter) {
         letterService.save(letter);
     }
