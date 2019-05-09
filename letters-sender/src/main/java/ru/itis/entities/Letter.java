@@ -21,6 +21,6 @@ public class Letter {
     Long id;
     String receiver;
     String subjectMatter;
-    String letterText;
-    boolean statusOfSendingLetter;
+    String text;
+    boolean status;
 }

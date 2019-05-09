@@ -8,7 +8,6 @@ import ru.itis.entities.Letter;
 import ru.itis.repository.LetterRepository;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,8 +33,8 @@ public class LetterServiceImpl implements LetterService {
             Letter newLetter = Letter.builder()
                     .receiver(letter.getReceiver())
                     .subjectMatter(letter.getSubjectMatter())
-                    .letterText(letter.getLetterText())
-                    .statusOfSendingLetter(false)
+                    .text(letter.getText())
+                    .status(false)
                     .build();
             letterRepository.save(newLetter);
         } catch (IOException e) {
