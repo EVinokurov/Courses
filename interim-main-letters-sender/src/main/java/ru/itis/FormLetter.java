@@ -1,0 +1,16 @@
+package ru.itis;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class FormLetter {
+    String receiver;
+    String subjectMatter;
+    String letterText;
+}
