@@ -1,7 +1,9 @@
 package ru.itis.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import ru.itis.security.UserDetailsImpl;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,5 +24,11 @@ public class UserServiceImpl implements UserService {
 
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserByAuthentication(Authentication authentication) {
+        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
+        return userRepository.findOneByLogin(principal.getUsername()).get();
     }
 }

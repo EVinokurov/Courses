@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import ru.itis.user.EditProfileForm;
 
 import java.util.List;
 
@@ -29,5 +30,15 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public List<Teacher> getAll() {
         return teacherRepository.findAll();
+    }
+
+    @Override
+    public Teacher save(EditProfileForm form) {
+        Teacher teacher = Teacher.builder()
+                .fName(form.getFName())
+                .sName(form.getSName())
+                .thName(form.getThName())
+                .build();
+        return teacherRepository.save(teacher);
     }
 }

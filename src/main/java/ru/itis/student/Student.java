@@ -1,9 +1,6 @@
 package ru.itis.student;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.itis.course.CourseApply;
 import ru.itis.user.User;
 
@@ -13,7 +10,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
 @Entity
 public class Student {
 

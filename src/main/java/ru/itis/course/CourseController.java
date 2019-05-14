@@ -80,11 +80,6 @@ public class CourseController {
 
     @PostMapping("/new")
     public String createCourse(@Valid CourseForm courseForm, BindingResult bindingResult, ModelMap model) {
-        if (bindingResult.hasErrors()){
-            model.addAttribute("error", "error");
-            model.addAttribute(COURSE_ATTRIBUTE_NAME, courseForm);
-            return "newCourse";
-        }
         courseService.addCourse(courseForm);
         return "redirect:/courses";
     }

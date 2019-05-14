@@ -51,7 +51,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Регистрация</button>
 
-            <input type="hidden" name="role" value="2">
+            <input type="hidden" name="role" value="1">
         </form>
     </div>
     <!- ФОРМА РЕГИСТРАЦИИ СТУДЕНТА->
@@ -97,11 +97,9 @@
                 <!- ПАРОЛЬ ->
                 <input name="hashPassword" type="password" class="form-control" id="pass" placeholder="Пароль">
                 <br>
-                <!- ПОВТОР ПАРОЛЯ ->
-                <input type="password" class="form-control" id="repPass" placeholder="Повторите пароль">
             </div>
             <button type="submit" class="btn btn-primary">Регистрация</button>
-            <input type="hidden" name="role" value="1">
+            <input type="hidden" name="role" value="2">
         </form>
     </div>
 </div>

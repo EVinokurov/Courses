@@ -15,9 +15,7 @@
                     <div class="form-group">
                         <label for="input">Professor</label>
                         <select required class="form-control" name="teacher" id="exampleFormControlSelect1">
-                            <#list teachers as teacher>
-                            <option value="${teacher.getId()}">${teacher.getId()}</option>
-                            </#list>
+                            <option value="26">26</option>
                         </select>
 
                     </div>
@@ -67,7 +65,7 @@
     </div>
 </form>
 <#if error??>
-    <h1>Обкекался?</h1>
+    <h1>ошибка</h1>
 </#if>
 
 </body>

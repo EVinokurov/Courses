@@ -1,9 +1,6 @@
 package ru.itis.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.itis.security.Role;
 import ru.itis.student.Student;
 import ru.itis.teacher.Teacher;
@@ -12,7 +9,8 @@ import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Builder
 @Entity
 @Table(name = "USERS")
